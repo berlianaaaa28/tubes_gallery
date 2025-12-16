@@ -1,7 +1,6 @@
 <?php
 include 'config.php';
 
-/* Data ide */
 $ideas = [
     'Vision Board 2026' => 'vision',
     'Destinasi Wisata'  => 'travel',
@@ -9,7 +8,6 @@ $ideas = [
     'Sunset Mood'      => 'sunset'
 ];
 
-/* Ambil 1 foto dari Pexels */
 function getIdeaImage($query) {
     $url = "https://api.pexels.com/v1/search?query=$query&per_page=1";
     $opts = [
@@ -21,19 +19,19 @@ function getIdeaImage($query) {
     $context = stream_context_create($opts);
     $json = file_get_contents($url, false, $context);
     $data = json_decode($json, true);
-
     return $data['photos'][0]['src']['large'] ?? '';
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Pexels Gallery</title>
+<title>Pexels Away</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ===== NAVBAR (SATU SAJA) ===== -->
 <div class="navbar">
     <div class="logo">
         <a href="index.php">
@@ -41,9 +39,20 @@ function getIdeaImage($query) {
         </a>
     </div>
 
-    <div class="menu">
-        <a href="index.php">Home</a>
-        <a href="list.php">Gallery</a>
+    <div class="nav-right">
+        <ul class="menu">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="list.php">Gallery</a></li>
+        </ul>
+
+        <!-- Dark Mode Toggle -->
+        <div class="theme-switch">
+            <input type="checkbox" id="darkToggle" hidden>
+            <label for="darkToggle" class="switch">
+                <span class="sun">☀️</span>
+                <span class="moon">🌙</span>
+            </label>
+        </div>
     </div>
 </div>
 
@@ -51,25 +60,18 @@ function getIdeaImage($query) {
 
 <div style="text-align:center;">
     <form action="list.php" method="get">
-        <input type="text" name="query" placeholder="Cari foto..." 
-               style="padding:12px;width:250px;border-radius:10px;border:1px solid #ccc;">
-        <button type="submit"
-                style="padding:12px 18px;border-radius:10px;border:none;background:#1E88E5;color:white;">
-            Search
-        </button>
+        <input type="text" name="query" placeholder="Cari foto...">
+        <button type="submit">Search</button>
     </form>
 </div>
 
-<!-- IDEAS YOU MIGHT LIKE (DINAMIS DARI API PEXELS) -->
+<!-- IDEAS -->
 <div class="ideas-section">
     <h2>Ideas you might like</h2>
-
     <div class="ideas-row">
         <?php foreach ($ideas as $title => $query): ?>
             <a href="list.php?query=<?= $query ?>" class="idea-card">
-                <div class="overlay">
-                    <span>View Gallery</span>
-                </div>
+                <div class="overlay"><span>View Gallery</span></div>
                 <img src="<?= getIdeaImage($query) ?>" alt="<?= $title ?>">
                 <div class="idea-info">
                     <h4><?= $title ?></h4>
@@ -79,6 +81,21 @@ function getIdeaImage($query) {
         <?php endforeach; ?>
     </div>
 </div>
+
+<script>
+const toggle = document.getElementById("darkToggle");
+
+// load theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggle.checked = true;
+}
+
+toggle.addEventListener("change", function () {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", this.checked ? "dark" : "light");
+});
+</script>
 
 </body>
 </html>
