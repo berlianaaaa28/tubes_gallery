@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"FileTypeTest::test_files_exist":0.005,"FileTypeTest::test_php_files_contain_php_code":0,"FileTypeTest::test_php_files_contain_html_elements":0,"FileTypeTest::test_no_syntax_errors_in_php_files":0.09,"FileTypeTest::test_gallery_application_identity_exists":0}}
