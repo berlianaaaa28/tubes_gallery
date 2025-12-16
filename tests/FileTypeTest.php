@@ -4,7 +4,8 @@ use PHPUnit\Framework\TestCase;
 class FileTypeTest extends TestCase
 {
     private $projectFiles = [
-        'index.php'
+        'index.php',
+        'detail.php'
     ];
 
     /**
