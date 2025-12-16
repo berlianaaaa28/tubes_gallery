@@ -13,6 +13,11 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 $p = json_decode($response, true);
+
+/* TAMBAHAN INFO FOTO */
+$width  = $p['width'];
+$height = $p['height'];
+$orientation = $width > $height ? 'Landscape' : 'Portrait';
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,11 +41,21 @@ $p = json_decode($response, true);
     </div>
 </div>
 
-
 <div class="detail-container">
     <a class="back-link" href="javascript:history.back()">⬅ Kembali</a>
+
     <img src="<?= $p['src']['large2x'] ?>">
+
     <p><b>Photographer:</b> <?= htmlspecialchars($p['photographer']) ?></p>
+
+    <!-- INFO FOTO -->
+    <div class="photo-meta">
+        <h3>Photo Information</h3>
+        <p><b>Photo ID:</b> <?= $p['id'] ?></p>
+        <p><b>Resolution:</b> <?= $width ?> x <?= $height ?></p>
+        <p><b>Orientation:</b> <?= $orientation ?></p>
+    </div>
+
     <p>
         <a href="<?= $p['url'] ?>" target="_blank">View on Pexels</a>
     </p>
