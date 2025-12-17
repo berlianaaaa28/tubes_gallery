@@ -44,6 +44,7 @@ function getIdeaImage($query) {
     <div class="menu">
         <a href="index.php">Home</a>
         <a href="list.php">Gallery</a>
+        <a href="favorite.php">❤️ Favorite</a> <!-- MENU BARU -->
     </div>
 </div>
 
@@ -60,7 +61,7 @@ function getIdeaImage($query) {
     </form>
 </div>
 
-<!-- IDEAS YOU MIGHT LIKE (DINAMIS DARI API PEXELS) -->
+<!-- IDEAS YOU MIGHT LIKE -->
 <div class="ideas-section">
     <h2>Ideas you might like</h2>
 
