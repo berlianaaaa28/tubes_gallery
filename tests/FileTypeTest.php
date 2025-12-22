@@ -11,7 +11,8 @@ class FileTypeTest extends TestCase
         'trending.php',
         'photo-action.php',
         'list.php',
-        'move-to-cluster.php'
+        'move-to-cluster.php',
+        'select-category.php'
     ];
 
     /**
