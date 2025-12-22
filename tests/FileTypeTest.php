@@ -5,7 +5,11 @@ class FileTypeTest extends TestCase
 {
     private $projectFiles = [
         'index.php',
-        'detail.php'
+        'detail.php',
+        'favorit.php',
+        'cluster.php',
+        'trending.php',
+        'photo-action.php'
     ];
 
     /**
