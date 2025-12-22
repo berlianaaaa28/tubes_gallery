@@ -7,7 +7,8 @@ class FileTypeTest extends TestCase
         'index.php',
         'detail.php',
         'favorit.php',
-        'cluster.php'
+        'cluster.php',
+        'trending.php'
     ];
 
     /**
