@@ -9,7 +9,8 @@ class FileTypeTest extends TestCase
         'favorit.php',
         'cluster.php',
         'trending.php',
-        'photo-action.php'
+        'photo-action.php',
+        'list.php'
     ];
 
     /**
