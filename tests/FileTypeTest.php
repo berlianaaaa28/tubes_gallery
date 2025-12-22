@@ -6,7 +6,8 @@ class FileTypeTest extends TestCase
     private $projectFiles = [
         'index.php',
         'detail.php',
-        'favorit.php'
+        'favorit.php',
+        'cluster.php'
     ];
 
     /**
